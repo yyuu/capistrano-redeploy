@@ -1,5 +1,5 @@
 module Capistrano
   module ReDeploy
-    VERSION = "0.0.2git"
+    VERSION = "0.1.0git"
   end
 end
