@@ -73,7 +73,7 @@ Redeploy files in `public` (except `public/assets` and `public/system`) from cur
 
 ### Redeploy files from local path with different names
 
-Redeploy files in `src/main/resources` from current directory to `target/webapp/WEB-INF`.
+Redeploy files in `src/main/webapp` from current directory to `target/webapp/WEB-INF`.
 
     # config/deploy.rb
     set :scm, :git
@@ -84,9 +84,10 @@ Redeploy files in `src/main/resources` from current directory to `target/webapp/
       :deploy_via => :copy,
       :repository => ".", # redeploy from current directory
     }
-    set :redeploy_source, "src/main/resources"
+    set :redeploy_source, "src/main/webapp"
     set :redeploy_destination, "target/webapp/WEB-INF"
     set :redeploy_children, ["."]
+    set :redeploy_exclusions, ["WEB-INF/web.xml"]
 
 
 ## Contributing
