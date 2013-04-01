@@ -66,6 +66,7 @@ module Capistrano
                 redeploy_variables.each do |key, val|
                   set(key, val)
                 end
+                logger.debug("Fetching source for re-deployment from #{repository} (#{scm}) via #{deploy_via}.")
                 strategy.deploy!
               end
               run("rsync -lrpt #{(release_path + "/").dump} #{destination.dump}", options)
@@ -91,7 +92,7 @@ module Capistrano
           def redeploy!(source, destination, options={})
             exclusions = redeploy_exclusions.map { |e| "--exclude=#{e.dump}" }.join(" ")
             absolute_path_map(source, destination).each do |s, d|
-              logger.info("redeploy: #{s} -> #{d}")
+              logger.debug("Re-deploying from `#{s}' to `#{d}'.")
               run("mkdir -p #{s.dump} #{d.dump}", options)
               run("rsync -lrpt #{exclusions} #{(s + "/").dump} #{d.dump}", options)
             end
