@@ -83,6 +83,7 @@ Redeploy files in `src/main/webapp` from current directory to `target/webapp/WEB
       :scm => :none,
       :deploy_via => :copy,
       :repository => ".", # redeploy from current directory
+      :copy_cache => nil,
     }
     set :redeploy_source, "src/main/webapp"
     set :redeploy_destination, "target/webapp/WEB-INF"
