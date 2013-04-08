@@ -64,7 +64,11 @@ module Capistrano
                 set(:strategy) { ::Capistrano::Deploy::Strategy.new(deploy_via, self) }
                 # merge variables
                 redeploy_variables.each do |key, val|
-                  set(key, val)
+                  if val.nil?
+                    unset(key)
+                  else
+                    set(key, val)
+                  end
                 end
                 logger.debug("Fetching source for re-deployment from #{repository} (#{scm}) via #{deploy_via}.")
                 strategy.deploy!
