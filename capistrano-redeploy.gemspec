@@ -23,7 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "capistrano-copy-subdir", ">= 0.1.0"
   spec.add_development_dependency "capistrano-platform-resources", ">= 0.1.0"
-  spec.add_development_dependency "net-scp", "~> 1.0.4"
-  spec.add_development_dependency "net-ssh", "~> 2.2.2"
   spec.add_development_dependency "vagrant", "~> 1.0.6"
 end
